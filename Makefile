@@ -16,7 +16,7 @@
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 
-CC = /bin/x86_64-w64-mingw32-gcc # Jack, 编译器选好了随时跟我说一声。这个是暂时用的。
+CC = /bin/x86_64-w64-mingw32-gcc
 FLAG = -std=c99 -Wall
 NAME = Dumpling
 DIR_OUT = out/
