@@ -24,7 +24,7 @@
 # include <string.h>
 # include <stdarg.h>
 
-/* par1="Exception"=_excep_e;
+/* par1="Exception"=excep_t;
    par2="File"=__FILE__;
    par3="Line"=__LINE__;
    par4="Function"=__FUNCTION__ */
@@ -56,56 +56,23 @@ typedef enum E_excep
   NoSuchElementException,
 } excep_t;
 
-/* These exceptions would become a super class which is so-called
-   "Abstract Class". */
 static __inline__ const char *
 __excep_etos(excep_t e)
 {
   switch(e)
     {
-      /* Once malloc returns NULL, this exception could stop the programme
-      for good. */
       case InstanceFailureException:
         return "InstanceFailureException";
-      /* When in "_var.h" and "_array.h" ..., it is common to have problems
-         related to bounding restrictions. Therefor, to protect a programme
-         by throwing this exception would be a better solution than just
-         having a "Segmentation Fault (Core dumped)" in the end of the day. */
       case IllegalMemoryAccessException:
         return "IllegalMemoryAccessException";
-      /* When passing through a function with given parameters, it is critical
-         to check whether they are qualified for the function to take in.
-         For example, if function "void f(int a)" requires parameter "a"
-         NOT to be negative, then we need to throw this exception for safety.
-         This exception is called on first once InvalidNullPointerException
-         involves.
-      */
       case InvalidArgumentException:
         return "InvalidArgumentException";
-      /* When in an array, a pointer must NOT go out of the scheduled
-         bound that limits the actual physical sizes on the memory.
-         This exception is kind of similarity of IllegalMemoryAccessException.
-         However, when using "_var.h" and "_array.h", there would be more
-         complex situations that puts variables into a conception of
-         generalisation for different size for one single variable.
-         This requires non-system-builtin but systematic check mechanics to
-         kick in. */
       case OutOfBoundException:
         return "OutOfBoundException";
-      /* In some particular cases, you would meet on some scenarios
-         that restricts the target to NOT be nulled. */
       case InvalidNullPointerException:
         return "InvalidNullPointerException";
-      /* When allocating with allocating functions, usually those who returns
-      NULL means failure of allocations. Out of memory specifically is the major
-      caution. And we use this exception to identify them. */
       case OutOfMemoryException:
         return "OutOfMemoryException";
-      /* To be able to throw this exception, you must have typo in
-         the name of targeting exception, or simply you just passed an
-         unknown exception into this function. Therefor, it is no longer
-         the responsibility for this function to "guess" which exception
-         you were meant to throw. And UnknownException it is to be thrown. */
       default:
         return "UnknownException";
     }
