@@ -34,6 +34,9 @@ $(RELEASE): main.o
 
 main.o:
 
-.PHONY: clean
+.PHONY: clean test
 clean:
 	-rm -rv *.o *.out $(DIR_DEBUG)*.exe $(DIR_RELEASE)*.exe
+
+test:
+	$(CC) $(FLAG) src/entrances/test.c -o $(DEBUG)
