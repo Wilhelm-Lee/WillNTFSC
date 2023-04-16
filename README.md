@@ -1,4 +1,4 @@
-# JackNTFS
+# CJackNTFS
 Dumping everything from a NTFS device into another one in a form of unorganised files. And more on.
 
 It is rather tricky to have something to be done like this one.  
